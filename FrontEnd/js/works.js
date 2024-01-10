@@ -1,7 +1,9 @@
 // works.js - Gère l'affichage des œuvres dans la galerie
+
 import { fetchWorks } from "./api.js";
 
 // Crée un élément de la galerie pour une œuvre
+
 const createGalleryItem = ({ imageUrl = "defaultImage.jpg", title = "Untitled" }) => {
   const figure = document.createElement("figure");
   const image = document.createElement("img");
@@ -16,7 +18,8 @@ const createGalleryItem = ({ imageUrl = "defaultImage.jpg", title = "Untitled" }
 };
 
 // Affiche les œuvres dans la galerie
-const showWorks = (works) => {
+
+export const showWorks = (works) => {
   const gallery = document.querySelector(".gallery");
   try {
     gallery.innerHTML = ""; // Nettoie la galerie avant d'ajouter de nouveaux éléments
@@ -30,6 +33,7 @@ const showWorks = (works) => {
 };
 
 // Affiche toutes les œuvres
+
 export const displayAllWorks = async () => {
   try {
     const works = await fetchWorks();

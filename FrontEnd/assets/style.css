@@ -128,6 +128,7 @@ li:hover a {
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+	margin-right: 15px;
 }
 .gallery {
 	width: 100%;
@@ -138,47 +139,70 @@ li:hover a {
 }
 
 .filter {
-  display: flex;
-  justify-content: center;
-  margin: 2rem;
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
 }
 
 .filter-button {
-  font-family: "Syne";
-  font-size: 1.1rem;
-  color: #1d6154;
-  background-color: rgba(255, 254, 248, 255);
-  border-color: #1d6154;
-  border-width: 1px;
-  text-align: center;
-  border-radius: 5rem;
-  padding: 0.5rem 1.2rem 0.5rem 1.2rem;
-  margin-top: 2rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+    font-family: "Syne";
+    font-size: 1.1rem;
+    color: #1d6154;
+    background-color: rgba(255, 254, 248, 255);
+    border-color: #1d6154;
+    border-width: 1px;
+    text-align: center;
+    border-radius: 5rem;
+    padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
 }
 
 .filter-button.selected {
-  background-color: #1d6154;
-  color: white;
-  border-width: 0px;
+    background-color: #1d6154;
+    color: white;
+    border-width: 0px;
+}
+
+.portfolio-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-regular {
+	padding-right: 0.6rem;
+	font-size: 1.1rem;
+}
+
+#login-button {
+	cursor: pointer;
+}
+.modify {
+    border: 0;
+    margin-bottom: 1.8em;
+	font-size: 0.9rem;
+    background-color: rgba(255, 254, 248, 255);
+	cursor: pointer
 }
 
 .gallery img {
-	width: 100%;
-
+    width: 100%;
 }
+
 #contact {
-	width: 50%;
-margin: auto;
+    width: 50%;
+    margin: auto;
 }
-#contact > * {
-	text-align: center;
 
+#contact > * {
+    text-align: center;
 }
+
 #contact h2{
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
 	margin-top:30px;
@@ -192,9 +216,11 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -216,7 +242,10 @@ input[type="submit"]{
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	color: white;
+}
+
+#connexion  .email, .password{
+	color: black;
 }
 
 #connexion {

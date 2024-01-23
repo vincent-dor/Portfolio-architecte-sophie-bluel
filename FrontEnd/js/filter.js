@@ -3,13 +3,13 @@
 import { fetchCategories, fetchWorks } from "./api.js";
 import { showWorks } from "./works.js";
 
+
 // Crée les boutons de filtrage pour chaque catégorie et le bouton "Afficher tous les objets"
 export const createFilterButtons = async () => {
   try {
     // Récupère les catégories et les œuvres depuis l'API
     const categories = await fetchCategories();
     const works = await fetchWorks();
-
     // Sélectionne le conteneur des filtres dans le HTML
     const filterContainer = document.querySelector(".filter");
 

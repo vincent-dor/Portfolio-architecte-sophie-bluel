@@ -1,39 +1,42 @@
-const updateLoginButton = (isLoggedIn) => {
+import { openModal } from "./modal.js";
+import { createFilterButtons } from "./filter.js";
+
+const update = (isLoggedIn) => {
   const loginButton = document.getElementById("login-button");
   loginButton.textContent = isLoggedIn ? "logout" : "login";
-  loginButton.addEventListener("click", () => {
-    if (isLoggedIn) {
-      sessionStorage.removeItem("token");
-      window.location.reload();
-    } else {
-      window.location.href = "login.html";
-    }
-  });
-};
+  loginButton.onclick = isLoggedIn ? logout : () => (window.location.href = "login.html");
 
-const updateFilterContainer = (isLoggedIn) => {
   const filterContainer = document.querySelector(".filter");
+
   if (filterContainer) {
-    filterContainer.style.display = isLoggedIn ? "none" : "flex";
+    if (isLoggedIn) {
+      filterContainer.innerHTML = "";
+    }
+  }
+
+  const portfolioTitle = document.querySelector(".portfolio-title");
+
+  if (isLoggedIn) {
+    const newButton = document.createElement("button");
+    newButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> Modifier';
+    newButton.classList.add("modify");
+    newButton.id = "openModalBtn";
+    newButton.onclick = openModal;
+    portfolioTitle.appendChild(newButton);
   }
 };
 
-const addModifyButton = () => {
-  const portfolioTitle = document.querySelector(".portfolio-title");
-  if (portfolioTitle) {
-    const addButton = document.createElement("button");
-    addButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> Modifier';
-    addButton.classList.add("modify");
-    portfolioTitle.appendChild(addButton);
+const logout = () => {
+  sessionStorage.removeItem("token");
+  update();
+  const addButton = document.getElementById("openModalBtn");
+  if (addButton) {
+    addButton.remove();
+    createFilterButtons();
   }
 };
 
 export const checkAuthStatus = () => {
   const token = sessionStorage.getItem("token");
-  updateLoginButton(token);
-  updateFilterContainer(token);
-  
-  if (token) {
-    addModifyButton();
-  }
+  update(token);
 };

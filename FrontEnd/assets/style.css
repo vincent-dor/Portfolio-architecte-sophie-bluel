@@ -237,11 +237,11 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
-#connexion input {
-	height: 50px;
-	font-size: 1.2em;
-	border: none;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+input {
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 #connexion  .email, .password{
@@ -297,8 +297,9 @@ footer nav ul {
 .modal {
 	display: none; /* Masque la modale par défaut */
 	position: fixed;
-	top: 0;
-	left: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	width: 100%;
 	height: 100%;
 	justify-content: center;
@@ -309,39 +310,189 @@ footer nav ul {
   /* Style pour le contenu de la modale */
   #modal-content {
 	display: flex;
-	max-width: 400px; /* Ajustez la largeur maximale selon vos besoins */
+	flex-direction: column;
+	max-width: 475px; /* Ajustez la largeur maximale selon vos besoins */
 	width: 100%;
-	padding: 20px;
+	padding: 15px 80px 15px 80px;
 	background-color: white;
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	margin: auto;
+	margin-top: 10rem;
+  }
+  
+  .close, .back {
+	color: black;
+	background-color: white;
+	font-size: 20px;
+	cursor: pointer;
+	border: none;
+	padding: 10px;
   }
 
-  #modal-content1 {
-	display: none;
-	max-width: 400px; /* Ajustez la largeur maximale selon vos besoins */
+  .close-container {
+	align-self: flex-end;
+	margin-right: -50px;
+  }
+ 
+  .back-container {
+	margin-left: -50px;
+  }
+
+.modal::before {
+	content: 'Mode édition';
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
-	padding: 20px;
-	background-color: white;
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	line-height: 40px;
+	height: 40px; 
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	z-index: 1000;
+  }
+
+#workImagesContainer {
+	display: flex;
+	flex-wrap: wrap;
+	border-bottom: 2px solid #ccc; 
+	padding-bottom: 40px;
+	padding-top: 40px;
   }
   
-  /* Style pour les images dans la modale */
-  #modal-content img {
-	max-width: 10%;
-	max-height: 10%;
-	margin: 10px;
+  .work-image-container {
+	position: relative;
+	width: 100%;
+	max-width: 75px; 
+	margin: 10px 10px 10px 10px; 
   }
   
-  /* Style pour le bouton de fermeture */
-  .close {
-	color: white;
-	font-size: 30px;
+  .work-image-container img {
+	width: 100%;
+  }
+  
+  .work-image-container button {
 	position: absolute;
-	top: 10px;
-	right: 15px;
+	top: 5px;
+	right: 5px;
+	background-color: black;
+	color: #fff;
+	border: none;
+	padding: 1px 3px;
 	cursor: pointer;
   }
+
+  .modal-title {
+	display: flex;
+	justify-content: center;
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+  }
+
+ /* Ajouter ces styles pour personnaliser l'apparence du formulaire d'ajout de photo */
+
+  input[type="file"] + label {
+	background: #CBD6DC;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+    border-radius: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #306685;
+	font-weight: 600;
+	border: none; 
+	cursor: pointer;
+  }
+  
+  /* Styliser le conteneur du formulaire d'ajout de photo */
+  .button-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+  }
+  
+  form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+
+/* Ajouter ces styles pour le formulaire d'ajout de photo */
+.button-container {
+	display: flex;
+	justify-content: space-between;
+	margin: 0;
+  }
+  
+ .add-photo-form-container {
+	background: #E8F1F6;
+ /* Bleu encore plus clair */
+	width: 475px;
+	height: 169px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+	padding-top: 10px;
+	padding-bottom: 10px;
+  }
+  
+  /* Styles pour le bouton "Ajouter photo" */
+  .add-photo-button {
+	background-color: #ccc; /* Gris pour le fond du bouton */
+	color: #3498db; /* Bleu pour le texte du bouton */
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+  }
+    
+  /* Styles pour l'aperçu de l'image */
+  #image-preview {
+	max-width: 130px;
+	max-height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+  }
+  
+  #image-preview img {
+	max-height: 100%;
+  }
+
+  .image-input-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+
+  .fa-image {
+	font-size: 5rem ;
+	color: #CBD6DC;
+  }
+  
+#titleInput, #categorySelect {
+	border: none;
+	background-color: white;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	width: 475px;
+	height: 40px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	padding: 0;
+  }
+
+.form-label {
+	align-self: flex-start;
+}
+.form-elements-container {
+	border-bottom: 2px solid #ccc;
+	padding-bottom: 40px;
+	width: 475px;
+}

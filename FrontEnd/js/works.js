@@ -54,12 +54,18 @@ export const loadWorkImages = async () => {
     const workImagesContainer = document.getElementById("workImagesContainer");
 
     works.forEach((work) => {
+      // Créer une div pour chaque image avec la classe .work-image-container
+      const imageContainer = document.createElement("div");
+      imageContainer.classList.add("work-image-container");
+
+      // Créer une balise img pour afficher l'image
       const image = document.createElement("img");
       image.src = work.imageUrl;
       image.alt = work.title;
 
+      // Créer un bouton de suppression
       const deleteButton = document.createElement("button");
-      deleteButton.innerText = "X";
+      deleteButton.innerHTML = '<i class="fa-solid fa-trash-can fa-xs"></i>';
 
       deleteButton.addEventListener("click", async () => {
         try {
@@ -67,15 +73,19 @@ export const loadWorkImages = async () => {
           await deleteWorkImage(work.id);
 
           // Supprimer l'image et le bouton lorsque la suppression réussit
-          workImagesContainer.removeChild(image);
-          workImagesContainer.removeChild(deleteButton);
+          workImagesContainer.removeChild(imageContainer);
+          displayAllWorks();
         } catch (error) {
           console.error(error.message);
         }
       });
 
-      workImagesContainer.appendChild(image);
-      workImagesContainer.appendChild(deleteButton);
+      // Ajouter l'image et le bouton à la div .work-image-container
+      imageContainer.appendChild(image);
+      imageContainer.appendChild(deleteButton);
+
+      // Ajouter la div à la div principale (workImagesContainer)
+      workImagesContainer.appendChild(imageContainer);
     });
   } catch (error) {
     console.error("Erreur lors du chargement des images des projets : ", error);

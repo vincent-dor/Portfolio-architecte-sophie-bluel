@@ -19,21 +19,21 @@ export const fetchCategories = () => fetchData("http://localhost:5678/api/catego
 
 // Fonction pour envoyer les données d'une nouvelle œuvre
 export const sendWorkData = async (formData) => {
-  const postWorkUrl = 'http://localhost:5678/api/works';
+  const postWorkUrl = "http://localhost:5678/api/works";
   const token = sessionStorage.getItem("token");
 
   try {
     const response = await fetch(postWorkUrl, {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${token}` },
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
 
-    if (!response.ok) throw new Error('Erreur lors de l\'ajout de la photo');
+    if (!response.ok) throw new Error("Erreur lors de l'ajout de la photo");
 
     return await response.json();
   } catch (error) {
-    console.error('Error during POST request:', error);
+    console.error("Error during POST request:", error);
   }
 };
 
@@ -46,7 +46,7 @@ export const deleteWorkImage = async (workId) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 

@@ -1,3 +1,5 @@
+// auth.js - Gère les fonctionnalités liées à l'authentification et à l'interface utilisateur
+
 // Importation des fonctions nécessaires depuis d'autres fichiers
 import { openModal } from "./modal.js";
 import { createFilterButtons } from "./filter.js";

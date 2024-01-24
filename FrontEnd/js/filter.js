@@ -1,8 +1,8 @@
 // filter.js - Gère la création des boutons de filtrage par catégorie
 
+// Importation des fonctions depuis d'autres fichiers
 import { fetchCategories, fetchWorks } from "./api.js";
 import { showWorks } from "./works.js";
-
 
 // Crée les boutons de filtrage pour chaque catégorie et le bouton "Afficher tous les objets"
 export const createFilterButtons = async () => {
@@ -10,32 +10,17 @@ export const createFilterButtons = async () => {
     // Récupère les catégories et les œuvres depuis l'API
     const categories = await fetchCategories();
     const works = await fetchWorks();
+
     // Sélectionne le conteneur des filtres dans le HTML
     const filterContainer = document.querySelector(".filter");
 
     // Crée le bouton "Afficher tous les objets"
-    const showAllButton = document.createElement("button");
-    showAllButton.textContent = "Tous";
-    showAllButton.classList.add("filter-button", "selected");
-    showAllButton.addEventListener("click", () => {
-      // Affiche toutes les œuvres quand le bouton "Tous" est cliqué
-      showWorks(works);
-      removeAllSelected();
-      showAllButton.classList.add("selected");
-    });
+    const showAllButton = createFilterButton("Tous", () => showWorks(works), true);
     filterContainer.appendChild(showAllButton);
 
     // Crée un bouton pour chaque catégorie
     categories.forEach((category) => {
-      const categoryButton = document.createElement("button");
-      categoryButton.textContent = `${category.name}`;
-      categoryButton.classList.add("filter-button");
-      categoryButton.addEventListener("click", () => {
-        // Affiche les œuvres correspondant à la catégorie sélectionnée
-        displayCategoryWorks(category);
-        removeAllSelected();
-        categoryButton.classList.add("selected");
-      });
+      const categoryButton = createFilterButton(category.name, () => displayCategoryWorks(category));
       filterContainer.appendChild(categoryButton);
     });
   } catch (error) {
@@ -43,14 +28,28 @@ export const createFilterButtons = async () => {
   }
 };
 
- // Fonction pour supprimer la sélection sur tous les boutons de filtre
-    const removeAllSelected = () => {
-      const allButtons = document.querySelectorAll(".filter-button");
-      allButtons.forEach((button) => {
-        button.classList.remove("selected");
-      });
-    };
-    
+// Fonction pour créer un bouton de filtre
+const createFilterButton = (text, onClickHandler, isSelected = false) => {
+  const filterButton = document.createElement("button");
+  filterButton.textContent = text;
+  filterButton.classList.add("filter-button");
+  if (isSelected) filterButton.classList.add("selected");
+  filterButton.addEventListener("click", () => {
+    onClickHandler();
+    removeAllSelected();
+    filterButton.classList.add("selected");
+  });
+  return filterButton;
+};
+
+// Fonction pour supprimer la sélection sur tous les boutons de filtre
+const removeAllSelected = () => {
+  const allButtons = document.querySelectorAll(".filter-button");
+  allButtons.forEach((button) => {
+    button.classList.remove("selected");
+  });
+};
+
 // Affiche les œuvres correspondant à une catégorie donnée
 const displayCategoryWorks = async (category) => {
   try {

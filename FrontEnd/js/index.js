@@ -15,9 +15,8 @@ import { checkAuthStatus } from "./auth.js";
     // Crée les boutons de filtrage pour les catégories ou tout autre filtrage nécessaire
     await createFilterButtons();
 
-
     // Vérifiez le statut d'authentification
-    checkAuthStatus();
+    await checkAuthStatus();
   } catch (error) {
     // Capture et affiche les erreurs qui pourraient se produire lors du chargement initial
     console.error("Une erreur s'est produite : ", error);

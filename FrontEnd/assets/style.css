@@ -308,7 +308,7 @@ footer nav ul {
   }
   
   /* Style pour le contenu de la modale */
-  #modal-content {
+#modal-content {
 	display: flex;
 	flex-direction: column;
 	max-width: 475px; /* Ajustez la largeur maximale selon vos besoins */
@@ -322,7 +322,7 @@ footer nav ul {
 	margin-top: 10rem;
   }
   
-  .close, .back {
+.close, .back {
 	color: black;
 	background-color: white;
 	font-size: 20px;
@@ -331,17 +331,16 @@ footer nav ul {
 	padding: 10px;
   }
 
-  .close-container {
+.close-container {
 	align-self: flex-end;
 	margin-right: -50px;
   }
  
-  .back-container {
+.back-container {
 	margin-left: -50px;
   }
 
-.modal::before {
-	content: 'Mode édition';
+.modal-edition {
 	display: block;
 	position: fixed;
 	top: 0;
@@ -353,8 +352,11 @@ footer nav ul {
 	color: #fff;
 	text-align: center;
 	font-size: 18px;
-	font-weight: bold;
 	z-index: 1000;
+  }
+
+.span-text {
+	margin-left: 10px;
   }
 
 #workImagesContainer {
@@ -362,21 +364,20 @@ footer nav ul {
 	flex-wrap: wrap;
 	border-bottom: 2px solid #ccc; 
 	padding-bottom: 40px;
-	padding-top: 40px;
   }
   
-  .work-image-container {
+.work-image-container {
 	position: relative;
 	width: 100%;
 	max-width: 75px; 
 	margin: 10px 10px 10px 10px; 
   }
   
-  .work-image-container img {
+.work-image-container img {
 	width: 100%;
   }
   
-  .work-image-container button {
+.work-image-container button {
 	position: absolute;
 	top: 5px;
 	right: 5px;
@@ -387,16 +388,16 @@ footer nav ul {
 	cursor: pointer;
   }
 
-  .modal-title {
+.modal-title {
 	display: flex;
 	justify-content: center;
 	font-size: 1.5rem;
 	margin-bottom: 2rem;
   }
 
- /* Ajouter ces styles pour personnaliser l'apparence du formulaire d'ajout de photo */
+/* Ajouter ces styles pour personnaliser l'apparence du formulaire d'ajout de photo */
 
-  input[type="file"] + label {
+input[type="file"] + label {
 	background: #CBD6DC;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
@@ -411,17 +412,18 @@ footer nav ul {
 	cursor: pointer;
   }
   
-  /* Styliser le conteneur du formulaire d'ajout de photo */
-  .button-container {
+/* Styliser le conteneur du formulaire d'ajout de photo */
+.button-container {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 10px;
   }
   
-  form {
+.form-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 10px;
   }
 
 /* Ajouter ces styles pour le formulaire d'ajout de photo */
@@ -431,7 +433,7 @@ footer nav ul {
 	margin: 0;
   }
   
- .add-photo-form-container {
+.add-photo-form-container {
 	background: #E8F1F6;
  /* Bleu encore plus clair */
 	width: 475px;
@@ -443,17 +445,14 @@ footer nav ul {
 	padding-bottom: 10px;
   }
   
-  /* Styles pour le bouton "Ajouter photo" */
-  .add-photo-button {
-	background-color: #ccc; /* Gris pour le fond du bouton */
-	color: #3498db; /* Bleu pour le texte du bouton */
+
+.add-photo-button {
 	border: none;
-	padding: 10px;
 	cursor: pointer;
   }
     
-  /* Styles pour l'aperçu de l'image */
-  #image-preview {
+
+#image-preview {
 	max-width: 130px;
 	max-height: 200px;
 	display: flex;
@@ -462,17 +461,17 @@ footer nav ul {
 	overflow: hidden;
   }
   
-  #image-preview img {
+#image-preview img {
 	max-height: 100%;
   }
 
-  .image-input-container {
+.image-input-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
   }
 
-  .fa-image {
+.fa-image {
 	font-size: 5rem ;
 	color: #CBD6DC;
   }
@@ -491,6 +490,7 @@ footer nav ul {
 .form-label {
 	align-self: flex-start;
 }
+
 .form-elements-container {
 	border-bottom: 2px solid #ccc;
 	padding-bottom: 40px;

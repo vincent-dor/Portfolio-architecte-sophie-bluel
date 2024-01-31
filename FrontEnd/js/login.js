@@ -3,10 +3,17 @@
 // Sélectionne le formulaire de connexion dans le HTML
 const loginForm = document.querySelector(".form-connexion");
 
+// Ajoute une div pour afficher les messages d'erreur
+const errorDiv = document.createElement("div");
+errorDiv.classList.add("error-message"); // Ajoute une classe pour le style CSS
+
 // Ajoute un écouteur d'événement pour intercepter la soumission du formulaire
 loginForm.addEventListener("submit", async (event) => {
   // Empêche le comportement par défaut du formulaire
   event.preventDefault();
+
+  // Supprime les messages d'erreur existants
+  errorDiv.innerHTML = "";
 
   // Récupère les valeurs des champs email et password du formulaire
   const email = document.getElementById("email").value;
@@ -36,6 +43,11 @@ loginForm.addEventListener("submit", async (event) => {
     // Redirige l'utilisateur vers la page d'accueil (index.html)
     window.location.href = "index.html";
   } catch (error) {
+    // En cas d'erreur, affiche un message d'erreur
+    errorDiv.innerHTML = "Votre adresse email et/ou votre mot de passe sont incorrects.";
+    // Insère la div d'erreur avant le bouton de soumission
+    loginForm.insertBefore(errorDiv, loginForm.querySelector(".submit"));
+    
     // En cas d'erreur, affiche un message dans la console
     console.error("Erreur de connexion :", error);
   }
